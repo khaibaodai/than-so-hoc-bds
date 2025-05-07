@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thần Số Học BĐS - Công Cụ Tư Vấn Bất Động Sản Thông Minh</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .section {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+        .header-gradient {
+            background: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
+            color: white;
+        }
+        .result-section {
+            display: none;
+        }
+        .tab-button {
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem 0.25rem 0 0;
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+        .tab-button.active {
+            background-color: #3a1c71;
+            color: white;
+        }
+        .tab-content {
+            display: none;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 0 0.25rem 0.25rem 0.25rem;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .number-tag {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            background-color: #3a1c71;
+            color: white;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .custom-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 16px 12px;
+        }
+        .feature-card {
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .contact-info {
+            background: linear-gradient(135deg, #1a365d, #2563eb);
+            color: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            color: white;
+            margin-right: 1rem;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .social-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        .social-icon {
+            margin-right: 0.5rem;
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body class="mx-auto max-w-7xl px-4 py-8">
+    <!-- Header Section -->
+    <header class="section header-gradient text-center py-10 mb-8">
+        <h1 class="text-4xl font-bold mb-2">Thần Số Học BĐS</h1>
+        <p class="text-xl">Công Cụ Tư Vấn Bất Động Sản Thông Minh</p>
+        <div class="flex justify-center space-x-4 mt-4">
+            <a href="#input-form" class="bg-white text-indigo-800 px-4 py-2 rounded-md font-medium hover:bg-opacity-90 transition">Bắt đầu ngay</a>
+            <a href="#features" class="bg-transparent border border-white text-white px-4 py-2 rounded-md font-medium hover:bg-white hover:bg-opacity-20 transition">Xem tính năng</a>
+        </div>
+    </header>
+
+    <!-- Contact Expert Banner -->
+    <section class="contact-info">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-2xl font-bold mb-1">Vũ Trọng Khải</h3>
+                <p class="text-lg mb-2">Chuyên viên Sale & Marketing Bất Động Sản</p>
+                <p class="flex items-center"><i class="fas fa-phone-alt mr-2"></i>Hotline: <a href="tel:0902798800" class="font-bold ml-1 underline">0902 79 8800</a></p>
+            </div>
+            <div class="mt-4 md:mt-0">
+                <a href="#contact" class="bg-white text-indigo-800 px-6 py-3 rounded-md font-bold hover:bg-opacity-90 transition">Liên Hệ Tư Vấn</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="section">
+        <h2 class="text-2xl font-bold mb-6 text-indigo-800">Giới Thiệu Về Thần Số Học BĐS</h2>
+        <div class="flex flex-col md:flex-row gap-8">
+            <div class="flex-1">
+                <p class="mb-4">
+                    <span class="font-semibold">Thần Số Học BĐS</span> là công cụ kết hợp giữa bộ môn khoa học huyền bí 
+                    <span class="italic">Thần Số Học (Numerology)</span> với việc tư vấn bất động sản. Thông qua phân tích 
+                    các con số từ họ tên, ngày sinh, chúng tôi cung cấp những lời khuyên phù hợp nhất cho bạn trong quá trình 
+                    tìm kiếm, mua bán bất động sản.
+                </p>
+                <p>
+                    Bất động sản không chỉ là nơi ở mà còn là nơi chứa đựng năng lượng, ảnh hưởng đến sức khỏe, 
+                    tài chính và hạnh phúc của gia chủ. Với công cụ này, các môi giới bất động sản có thể cung cấp 
+                    giá trị tư vấn cao hơn, giúp khách hàng tìm được ngôi nhà không chỉ đẹp mà còn phù hợp với năng lượng 
+                    cá nhân theo nguyên lý thần số học.
+                </p>
+            </div>
+            <div class="flex-1">
+                <div class="bg-indigo-50 p-6 rounded-lg">
+                    <h3 class="font-semibold text-xl mb-3 text-indigo-700">Điểm nổi bật:</h3>
+                    <ul class="list-disc ml-5 space-y-2">
+                        <li>Phân tích con số cá nhân từ tên và ngày sinh</li>
+                        <li>Tư vấn số nhà phù hợp với năng lượng cá nhân</li>
+                        <li>Xác định hướng nhà tối ưu theo mệnh số</li>
+                        <li>Dự báo thời điểm thuận lợi để giao dịch bất động sản</li>
+                        <li>Báo cáo tương hợp giữa người mua và bất động sản</li>
+                        <li>Tư vấn phong thủy kết hợp thần số học cho từng không gian</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section">
+        <h2 class="text-2xl font-bold mb-6 text-indigo-800">Tính Năng Nổi Bật</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Feature 1 -->
+            <div class="feature-card bg-white rounded-lg shadow p-6 border-t-4 border-indigo-500">
+                <div class="flex items-center mb-4">
+                    <div class="rounded-full bg-indigo-100 p-3 mr-4">
+                        <i class="fas fa-hashtag text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">Phân Tích Thần Số Học Cá Nhân</h3>
+                </div>
+                <p class="text-gray-600">
+                    Phân tích chi tiết các chỉ số thần số học như Con số chủ đạo, Chỉ số linh hồn, Chỉ số nhân cách, 
+                    giúp hiểu rõ bản thân và nhu cầu thực sự về không gian sống.
+                </p>
+            </div>
+            
+            <!-- Feature 2 -->
+            <div class="feature-card bg-white rounded-lg shadow p-6 border-t-4 border-indigo-500">
+                <div class="flex items-center mb-4">
+                    <div class="rounded-full bg-indigo-100 p-3 mr-4">
+                        <i class="fas fa-home text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">Tư Vấn Số Nhà Hợp Mệnh</h3>
+                </div>
+                <p class="text-gray-600">
+                    Dựa trên chỉ số cá nhân, xác định những số nhà phù hợp nhất, mang lại may mắn và 
+                    thuận lợi cho cuộc sống. Giúp lựa chọn hoặc thay đổi số nhà cho phù hợp.
+                </p>
+            </div>
+            
+            <!-- Feature 3 -->
+            <div class="feature-card bg-white rounded-lg shadow p-6 border-t-4 border-indigo-500">
+                <div class="flex items-center mb-4">
+                    <div class="rounded-full bg-indigo-100 p-3 mr-4">
+                        <i class="fas fa-compass text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">Phân Tích Hướng Nhà</h3>
+                </div>
+                <p class="text-gray-600">
+                    Xác định hướng nhà tối ưu dựa trên mệnh số cá nhân, giúp tận dụng tối đa năng lượng 
+                    tích cực từ phương hướng, mang lại sức khỏe và thịnh vượng.
+                </p>
+            </div>
+            
+            <!-- Feature 4 -->
+            <div class="feature-card bg-white rounded-lg shadow p-6 border-t-4 border-indigo-500">
+                <div class="flex items-center mb-4">
+                    <div class="rounded-full bg-indigo-100 p-3 mr-4">
+                        <i class="fas fa-calendar-alt text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">Thời Điểm Giao Dịch Thuận Lợi</h3>
+                </div>
+                <p class="text-gray-600">
+                    Dự báo thời điểm thuận lợi để mua hoặc bán bất động sản dựa trên chu kỳ số cá nhân,
+                    giúp đưa ra quyết định đúng thời điểm, tối ưu lợi ích.
+                </p>
+            </div>
+            
+            <!-- Feature 5 -->
+            <div class="feature-card bg-white rounded-lg shadow p-6 border-t-4 border-indigo-500">
+                <div class="flex items-center mb-4">
+                    <div class="rounded-full bg-indigo-100 p-3 mr-4">
+                        <i class="fas fa-handshake text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">Báo Cáo Tương Hợp</h3>
+                </div>
+                <p class="text-gray-600">
+                    Phân tích mức độ tương hợp giữa cá nhân và bất động sản dựa trên các chỉ số thần số học,
+                    giúp đánh giá mức độ phù hợp trước khi quyết định.
+                </p>
+            </div>
+            
+            <!-- Feature 6 -->
+            <div class="feature-card bg-white rounded-lg shadow p-6 border-t-4 border-indigo-500">
+                <div class="flex items-center mb-4">
+                    <div class="rounded-full bg-indigo-100 p-3 mr-4">
+                        <i class="fas fa-yin-yang text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">Tư Vấn Phong Thủy</h3>
+                </div>
+                <p class="text-gray-600">
+                    Kết hợp thần số học với nguyên lý phong thủy, đưa ra lời khuyên tối ưu cho từng không gian trong nhà, 
+                    từ cửa chính, phòng khách đến phòng ngủ.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Input Form Section -->
+    <section id="input-form" class="section">
+        <h2 class="text-2xl font-bold mb-6 text-indigo-800">Tra Cứu Thần Số Học BĐS</h2>
+        <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="font-semibold text-lg mb-4 text-indigo-700">Hướng Dẫn Tra Cứu</h3>
+            <ol class="list-decimal ml-5 mb-6 space-y-2">
+                <li>Nhập đầy đủ <strong>Họ và Tên</strong> của bạn (có dấu) vào ô tương ứng.</li>
+                <li>Chọn hoặc nhập <strong>Ngày Sinh</strong> theo đúng định dạng <strong>DD/MM/YYYY</strong> (ví dụ: 25/12/1990).</li>
+                <li>Bạn có thể nhập thêm <strong>Số Điện Thoại</strong> (không bắt buộc).</li>
+                <li>Nhập <strong>Địa Chỉ Nhà</strong> hoặc <strong>Số Nhà</strong> bạn quan tâm (để phân tích tương hợp).</li>
+                <li>Nhấn nút <strong>Xem Phân Tích</strong> để nhận kết quả chi tiết.</li>
+            </ol>
+
+            <form id="numerologyForm" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">Họ và Tên (có dấu) *</label>
+                        <input type="text" id="fullName" name="fullName" required 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+                            placeholder="Nguyễn Văn A">
+                    </div>
+                    <div>
+                        <label for="birthDate" class="block text-sm font-medium text-gray-700 mb-1">Ngày Sinh *</label>
+                        <input type="date" id="birthDate" name="birthDate" required 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="phoneNumber" class="block text-sm font-medium text-gray-700 mb-1">Số Điện Thoại</label>
+                        <input type="tel" id="phoneNumber" name="phoneNumber" 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+                            placeholder="0912345678">
+                    </div>
+                    <div>
+                        <label for="houseNumber" class="block text-sm font-medium text-gray-700 mb-1">Số Nhà / Địa Chỉ Quan Tâm</label>
+                        <input type="text" id="houseNumber" name="houseNumber" 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+                            placeholder="Số 88 Đường ABC hoặc chỉ nhập số nhà (ví dụ: 88)">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="houseDirection" class="block text-sm font-medium text-gray-700 mb-1">Hướng Nhà (nếu biết)</label>
+                        <select id="houseDirection" name="houseDirection" 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 custom-select">
+                            <option value="">-- Chọn hướng nhà --</option>
+                            <option value="Đông">Đông</option>
+                            <option value="Tây">Tây</option>
+                            <option value="Nam">Nam</option>
+                            <option value="Bắc">Bắc</option>
+                            <option value="Đông Bắc">Đông Bắc</option>
+                            <option value="Đông Nam">Đông Nam</option>
+                            <option value="Tây Bắc">Tây Bắc</option>
+                            <option value="Tây Nam">Tây Nam</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="purpose" class="block text-sm font-medium text-gray-700 mb-1">Mục Đích</label>
+                        <select id="purpose" name="purpose" 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 custom-select">
+                            <option value="mua">Mua nhà</option>
+                            <option value="ban">Bán nhà</option>
+                            <option value="thue">Thuê nhà</option>
+                            <option value="dau_tu">Đầu tư</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="button" id="analyzeButton" class="bg-indigo-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-indigo-700 transition">
+                        Xem Phân Tích Thần Số Học BĐS
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="mt-4 bg-yellow-50 border-l-4 border-yellow-400 p-4 text-sm">
+            <p class="flex items-center">
+                <i class="fas fa-info-circle text-yellow-500 mr-2"></i>
+                <span><strong>Lưu ý:</strong> Kết quả phân tích dựa trên phương pháp Pythagoras và tư vấn từ AI, mang tính tham khảo. Website này không lưu trữ thông tin cá nhân (Họ tên, ngày sinh, số điện thoại).</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="section result-section">
+        <h2 class="text-2xl font-bold mb-6 text-indigo-800">Kết Quả Phân Tích Thần Số Học BĐS</h2>
+        
+        <div class="mb-6 bg-indigo-50 p-4 rounded-lg">
+            <h3 class="text-lg font-semibold mb-2">Thông tin khách hàng:</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <p><strong>Họ và tên:</strong> <span id="result-name"></span></p>
+                <p><strong>Ngày sinh:</strong> <span id="result-birthdate"></span></p>
+                <p><strong>Số điện thoại:</strong> <span id="result-phone"></span></p>
+                <p><strong>Địa chỉ/Số nhà quan tâm:</strong> <span id="result-house"></span></p>
+            </div>
+        </div>
+
+        <!-- Tabs for different analyses -->
+        <div class="mb-4 border-b border-gray-200">
+            <div class="flex flex-wrap">
+                <button class="tab-button active" data-tab="personal-tab">
+                    Phân Tích Cá Nhân
+                </button>
+                <button class="tab-button" data-tab="house-number-tab">
+                    Số Nhà Hợp Mệnh
+                </button>
+                <button class="tab-button" data-tab="direction-tab">
+                    Hướng Nhà Phù Hợp
+                </button>
+                <button class="tab-button" data-tab="timing-tab">
+                    Thời Điểm Thuận Lợi
+                </button>
+                <button class="tab-button" data-tab="compatibility-tab">
+                    Tương Hợp Người-Nhà
+                </button>
+                <button class="tab-button" data-tab="feng-shui-tab">
+                    Tư Vấn Phong Thủy
+                </button>
+            </div>
+        </div>
+
+        <!-- Tab Contents -->
+        <div class="tab-content active" id="personal-tab">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-5 rounded-lg shadow">
+                    <h4 class="font-bold text-lg mb-3 text-indigo-700">Con Số Chủ Đạo (Số Đường Đời)</h4>
+                    <div class="flex items-center mb-2">
+                        <div class="w-16 h-16 rounded-full bg-indigo-100 flex items-center justify-center text-3xl font-bold text-indigo-600 mr-4">
+                            <span id="life-path-number">7</span>
+                        </div>
+                        <p id="life-path-title" class="font-semibold">Người Có Trực Giác Mạnh Mẽ</p>
+                    </div>
+                    <p id="life-path-desc" class="text-gray-600 mt-2">
+                        Với con số chủ đạo 7, bạn là người có trực giác mạnh mẽ, thích phân tích và tìm hiểu sâu. Bạn cần 
+                        một không gian sống yên tĩnh, riêng tư và có tính thẩm mỹ cao.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-5 rounded-lg shadow">
+                    <h4 class="font-bold text-lg mb-3 text-indigo-700">Chỉ Số Linh Hồn</h4>
+                    <div class="flex items-center mb-2">
+                        <div class="w-16 h-16 rounded-full bg-indigo-100 flex items-center justify-center text-3xl font-bold text-indigo-600 mr-4">
+                            <span id="soul-number">3</span>
+                        </div>
+                        <p id="soul-title" class="font-semibold">Người Sáng Tạo và Biểu Đạt</p>
+                    </div>
+                    <p id="soul-desc" class="text-gray-600 mt-2">
+                        Chỉ số linh hồn 3 cho thấy khát khao được thể hiện bản thân một cách sáng tạo. Bạn thích những không gian 
+                        sống năng động, nhiều màu sắc và có thiết kế độc đáo.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-5 rounded-lg shadow">
+                    <h4 class="font-bold text-lg mb-3 text-indigo-700">Chỉ Số Nhân Cách</h4>
+                    <div class="flex items-center mb-2">
+                        <div class="w-16 h-16 rounded-full bg-indigo-100 flex items-center justify-center text-3xl font-bold text-indigo-600 mr-4">
+                            <span id="personality-number">5</span>
+                        </div>
+                        <p id="personality-title" class="font-semibold">Người Yêu Tự Do và Phiêu Lưu</p>
+                    </div>
+                    <p id="personality-desc" class="text-gray-600 mt-2">
+                        Với chỉ số nhân cách 5, bạn thích sự tự do và không bị gò bó. Nhà của bạn nên có không gian mở, 
+                        linh hoạt và khả năng thay đổi layout dễ dàng.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-5 rounded-lg shadow">
+                    <h4 class="font-bold text-lg mb-3 text-indigo-700">Chỉ Số Sứ Mệnh</h4>
+                    <div class="flex items-center mb-2">
+                        <div class="w-16 h-16 rounded-full bg-indigo-100 flex items-center justify-center text-3xl font-bold text-indigo-600 mr-4">
+                            <span id="destiny-number">4</span>
+                        </div>
+                        <p id="destiny-title" class="font-semibold">Người Xây Dựng và Kiên Định</p>
+                    </div>
+                    <p id="destiny-desc" class="text-gray-600 mt-2">
+                        Chỉ số sứ mệnh 4 cho thấy bạn là người thực tế và đáng tin cậy. Bạn cần một ngôi nhà vững chắc, 
+                        có cấu trúc rõ ràng và không gian làm việc chuyên nghiệp.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-6 bg-indigo-50 p-5 rounded-lg">
+                <h4 class="font-bold text-lg mb-3 text-indigo-700">Phân Tích Nhu Cầu Nhà Ở Theo Thần Số Học</h4>
+                <p id="housing-needs" class="mb-4">
+                    Dựa trên các chỉ số thần số học của bạn, ngôi nhà lý tưởng cần có sự cân bằng giữa không gian riêng tư (số 7) và 
+                    khu vực sinh hoạt sáng tạo, năng động (số 3). Nên có thiết kế linh hoạt (số 5) nhưng vẫn đảm bảo sự vững chắc và 
+                    ổn định lâu dài (số 4).
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <h5 class="font-semibold mb-1">Điểm phù hợp:</h5>
+                        <ul class="list-disc ml-5 space-y-1">
+                            <li>Nhà có phòng làm việc hoặc thư viện yên tĩnh</li>
+                            <li>Khu vực sáng tạo, giải trí linh hoạt</li>
+                            <li>Thiết kế hiện đại nhưng bền vững</li>
+                            <li>Khu vực có không gian xanh, gần thiên nhiên</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="font-semibold mb-1">Nên tránh:</h5>
+                        <ul class="list-disc ml-5 space-y-1">
+                            <li>Nhà không có không gian riêng tư</li>
+                            <li>Thiết kế quá cứng nhắc, không linh hoạt</li>
+                            <li>Khu vực quá ồn ào, không có sự yên tĩnh</li>
+                            <li>Nhà không có điểm nhấn sáng tạo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="house-number-tab">
+            <div class="bg-white p-6 rounded-lg shadow mb-6">
+                <h4 class="font-bold text-lg mb-4 text-indigo-700">Phân Tích Số Nhà Phù Hợp</h4>
+                
+                <div class="mb-6">
+                    <h5 class="font-semibold mb-2">Số nhà tương thích với bạn:</h5>
+                    <div class="flex flex-wrap gap-3 mb-4">
+                        <div class="bg-green-100 text-green-800 px-4 py-2 rounded-full font-medium">3</div>
+                        <div class="bg-green-100 text-green-800 px-4 py-2 rounded-full font-medium">5</div>
+                        <div class="bg-green-100 text-green-800 px-4 py-2 rounded-full font-medium">7</div>
+                        <div class="bg-green-100 text-green-800 px-4 py-2 rounded-full font-medium">9</div>
+                    </div>
+                    <p class="text-gray-600">
+                        Những số nhà này hòa hợp với năng lượng cá nhân của bạn, hỗ trợ phát triển sự trực giác, 
+                        sáng tạo và tự do trong cuộc sống.
+                    </p>
+                </div>
+                
+                <div class="mb-6">
+                    <h5 class="font-semibold mb-2">Số nhà cần cân nhắc:</h5>
+                    <div class="flex flex-wrap gap-3 mb-4">
+                        <div class="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full font-medium">1</div>
+                        <div class="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full font-medium">4</div>
+                        <div class="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full font-medium">8</div>
+                    </div>
+                    <p class="text-gray-600">
+                        Những số nhà này trung tính với năng lượng của bạn. Có thể chọn nếu các yếu tố khác của ngôi nhà 
+                        phù hợp với nhu cầu của bạn.
+                    </p>
+                </div>
+                
+                <div>
+                    <h5 class="font-semibold mb-2">Số nhà không phù hợp:</h5>
+                    <div class="flex flex-wrap gap-3 mb-4">
+                        <div class="bg-red-100 text-red-800 px-4 py-2 rounded-full font-medium">2</div>
+                        <div class="bg-red-100 text-red-800 px-4 py-2 rounded-full font-medium">6</div>
+                    </div>
+                    <p class="text-gray-600">
+                        Những số nhà này có thể tạo ra năng lượng xung đột với bạn, gây cảm giác không thoải mái hoặc 
+                        khó khăn trong cuộc sống.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h4 class="font-bold text-lg mb-4 text-indigo-700">Phân Tích Số Nhà Đang Quan Tâm</h4>
+                <div id="current-house-number-analysis">
+                    <div class="flex items-center mb-3">
+                        <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-xl font-bold text-indigo-600 mr-4">
+                            88
+                        </div>
+                        <div>
+                            <p class="font-semibold text-lg">Số nhà: 88</p>
+                            <p class="text-sm text-gray-500">Quy đổi thần số học: 7 (8+8=16, 1+6=7)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center mb-4">
+                        <span class="inline-block px-3 py-1 bg-green-100 text-green-800 font-medium rounded-full mr-2">Rất phù hợp</span>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                            <div class="bg-green-600 h-2.5 rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-4">
+                        Số nhà 88 (quy đổi thành số 7) rất hòa hợp với năng lượng cá nhân của bạn. Đây là con số 
+                        của trí tuệ, phân tích và trực giác - phản ánh chính xác con số chủ đạo của bạn. Ngôi nhà này sẽ hỗ trợ 
+                        phát triển khả năng suy nghĩ sâu sắc và mang lại cảm giác yên bình, phù hợp với nhu cầu không gian riêng tư.
+                    </p>
+                    
+                    <div class="bg-indigo-50 p-4 rounded-lg">
+                        <h5 class="font-semibold mb-2 text-indigo-700">Lời khuyên:</h5>
+                        <ul class="list-disc ml-5 space-y-1 text-gray-700">
+                            <li>Đây là lựa chọn số nhà rất tốt cho bạn, đặc biệt phù hợp với giai đoạn hiện tại của cuộc đời</li>
+                            <li>Cân nhắc thiết kế nội thất với tông màu trầm, xanh lá hoặc tím nhạt để tăng cường năng lượng tích cực</li>
+                            <li>Nên bố trí phòng làm việc hoặc không gian thiền ở vị trí yên tĩnh nhất của ngôi nhà</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="direction-tab">
+            <div class="bg-white p-6 rounded-lg shadow mb-6">
+                <h4 class="font-bold text-lg mb-4 text-indigo-700">Hướng Nhà Phù Hợp Theo Thần Số Học</h4>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <h5 class="font-semibold mb-3">Hướng nhà tốt nhất:</h5>
+                        <div class="space-y-3">
+                            <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                                <p class="font-medium text-green-800">Bắc</p>
+                                <p class="text-sm text-gray-600">Hướng Bắc kích hoạt năng lượng tư duy và sáng tạo, phù hợp với con số chủ đạo 7 của bạn.</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                                <p class="font-medium text-green-800">Đông</p>
+                                <p class="text-sm text-gray-600">Hướng Đông mang lại năng lượng mới mẻ, phù hợp với chỉ số linh hồn 3 và tinh thần phiêu lưu của bạn.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h5 class="font-semibold mb-3">Hướng nhà cần tránh:</h5>
+                        <div class="space-y-3">
+                            <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
+                                <p class="font-medium text-red-800">Tây Nam</p>
+                                <p class="text-sm text-gray-600">Hướng Tây Nam có thể tạo ra xung đột với năng lượng tự do và sáng tạo của bạn.</p>
+                            </div>
+                            <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
+                                <p class="font-medium text-red-800">Nam</p>
+                                <p class="text-sm text-gray-600">Hướng Nam quá mạnh mẽ có thể làm mất cân bằng nhu cầu tĩnh lặng và sự tập trung của bạn.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <h5 class="font-semibold mb-3">Sơ đồ hướng nhà theo thần số học cho bạn:</h5>
+                    <div class="relative w-full max-w-md mx-auto h-64 bg-gray-100 rounded-lg overflow-hidden">
+                        <!-- Compass diagram -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-5/6 h-5/6 border-2 border-gray-300 rounded-full relative">
+                                <!-- North -->
+                                <div class="absolute top-1 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-500 text-white px-3 py-1 rounded-full text-sm">Bắc</div>
+                                
+                                <!-- East -->
+                                <div class="absolute top-1/2 right-1 transform translate-y-(-50%) bg-green-500 text-white px-3 py-1 rounded-full text-sm">Đông</div>
+                                
+                                <!-- South -->
+                                <div class="absolute bottom-1 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-red-500 text-white px-3 py-1 rounded-full text-sm">Nam</div>
+                                
+                                <!-- West -->
+                                <div class="absolute top-1/2 left-1 transform translate-y-(-50%) bg-yellow-500 text-white px-3 py-1 rounded-full text-sm">Tây</div>
+                                
+                                <!-- Northeast -->
+                                <div class="absolute top-1/6 right-1/6 bg-yellow-500 text-white px-3 py-1 rounded-full text-sm">ĐB</div>
+                                
+                                <!-- Southeast -->
+                                <div class="absolute bottom-1/6 right-1/6 bg-yellow-500 text-white px-3 py-1 rounded-full text-sm">ĐN</div>
+                                
+                                <!-- Southwest -->
+                                <div class="absolute bottom-1/6 left-1/6 bg-red-500 text-white px-3 py-1 rounded-full text-sm">TN</div>
+                                
+                                <!-- Northwest -->
+                                <div class="absolute top-1/6 left-1/6 bg-yellow-500 text-white px-3 py-1 rounded-full text-sm">TB</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                    <h5 class="font-semibold mb-2 text-indigo-700">Lời khuyên về hướng nhà:</h5>
+                    <ul class="list-disc ml-5 space-y-1 text-gray-700">
+                        <li>Nếu mua nhà có hướng không lý tưởng, bạn có thể bố trí nội thất để cân bằng năng lượng</li>
+                        <li>Cửa chính nên mở theo hướng Bắc hoặc Đông để đón năng lượng tích cực</li>
+                        <li>Phòng ngủ nên đặt ở hướng Đông để tận dụng năng lượng mặt trời buổi sáng</li>
+                        <li>Phòng làm việc phù hợp nhất với hướng Bắc để tăng cường khả năng tập trung và tư duy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="timing-tab">
+            <div class="bg-white p-6 rounded-lg shadow mb-6">
+                <h4 class="font-bold text-lg mb-4 text-indigo-700">Thời Điểm Thuận Lợi Cho Giao Dịch BĐS</h4>
+                
+                <div class="mb-6">
+                    <h5 class="font-semibold mb-3">Theo chu kỳ cá nhân năm 2023:</h5>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-white border border-gray-200">
+                            <thead>
+                                <tr>
+                                    <th class="py-2 px-4 border-b text-left">Tháng</th>
+                                    <th class="py-2 px-4 border-b text-left">Mức độ thuận lợi</th>
+                                    <th class="py-2 px-4 border-b text-left">Lời khuyên</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="py-2 px-4 border-b">1 - 2</td>
+                                    <td class="py-2 px-4 border-b">
+                                        <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">Trung bình</span>
+                                    </td>
+                                    <td class="py-2 px-4 border-b text-sm">Thời điểm nên nghiên cứu, tìm hiểu thị trường</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-4 border-b">3 - 4</td>
+                                    <td class="py-2 px-4 border-b">
+                                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Rất tốt</span>
+                                    </td>
+                                    <td class="py-2 px-4 border-b text-sm">Thời điểm lý tưởng để mua hoặc ký kết hợp đồng</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-4 border-b">5 - 6</td>
+                                    <td class="py-2 px-4 border-b">
+                                        <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Không thuận lợi</span>
+                                    </td>
+                                    <td class="py-2 px-4 border-b text-sm">Nên trì hoãn các quyết định quan trọng</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-4 border-b">7 - 9</td>
+                                    <td class="py-2 px-4 border-b">
+                                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Tốt</span>
+                                    </td>
+                                    <td class="py-2 px-4 border-b text-sm">Thời điểm thuận lợi để đàm phán giá và điều khoản</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-4 border-b">10 - 12</td>
+                                    <td class="py-2 px-4 border-b">
+                                        <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">Trung bình</span>
+                                    </td>
+                                    <td class="py-2 px-4 border-b text-sm">Có thể tiến hành nhưng cần thận trọng</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <h5 class="font-semibold mb-3">Ngày thuận lợi theo thần số học:</h5>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <p class="mb-2">Những ngày tốt nhất cho hoạt động bất động sản của bạn:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Ngày 3</span>
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Ngày 5</span>
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Ngày 7</span>
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Ngày 12</span>
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Ngày 21</span>
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Ngày 23</span>
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Ngày 30</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <p class="mb-2">Những ngày nên tránh giao dịch:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Ngày 4</span>
+                                <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Ngày 8</span>
+                                <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Ngày 13</span>
+                                <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Ngày 17</span>
+                                <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Ngày 26</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                    <h5 class="font-semibold mb-2 text-indigo-700">Tư vấn về thời điểm:</h5>
+                    <p class="mb-3 text-gray-700">Dựa vào chỉ số cá nhân của bạn, năm 2023 bạn đang trong chu kỳ số 7 - đây là thời điểm 
+                    lý tưởng để nghiên cứu, phân tích và đưa ra quyết định về bất động sản dựa trên trực giác và phân tích sâu sắc.</p>
+                    <ul class="list-disc ml-5 space-y-1 text-gray-700">
+                        <li>Nên dành thời gian nghiên cứu kỹ thị trường và tài chính trước khi đưa ra quyết định</li>
+                        <li>Tránh mua bán vội vàng hoặc dưới áp lực thời gian</li>
+                        <li>Tháng 3-4 và 7-9 là thời điểm thuận lợi nhất để tiến hành giao dịch</li>
+                        <li>Kết hợp ngày tốt với chu kỳ tháng để có kết quả tối ưu</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="compatibility-tab">
+            <div class="bg-white p-6 rounded-lg shadow mb-6">
+                <h4 class="font-bold text-lg mb-4 text-indigo-700">Phân Tích Tương Hợp Giữa Người Và Nhà</h4>
+                
+                <div class="mb-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h5 class="font-semibold">Mức độ tương hợp tổng thể:</h5>
+                        <span class="inline-block px-4 py-1 bg-green-100 text-green-800 font-medium rounded-full">85% - Rất cao</span>
+                    </div>
+                    
+                    <div class="w-full bg-gray-200 rounded-full h-2.5 mb-2">
+                        <div class="bg-green-600 h-2.5 rounded-full" style="width: 85%"></div>
+                    </div>
+                    
+                    <p class="text-gray-600 text-sm mb-6">
+                        Phân tích dựa trên sự tương hợp giữa con số chủ đạo của bạn (7) và số nhà (88 → 7). 
+                        Khi hai con số này trùng nhau, tạo ra sự cộng hưởng rất cao.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h5 class="font-semibold mb-3 text-indigo-700">Ảnh hưởng tích cực:</h5>
+                        <ul class="list-disc ml-5 space-y-2 text-gray-700">
+                            <li>Ngôi nhà sẽ thúc đẩy suy nghĩ sâu sắc và trực giác của bạn</li>
+                            <li>Tạo không gian lý tưởng cho nghiên cứu, học tập và suy ngẫm</li>
+                            <li>Khuyến khích tư duy độc lập và tìm kiếm tri thức</li>
+                            <li>Mang lại cảm giác bình yên và kết nối với bản thân</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h5 class="font-semibold mb-3 text-indigo-700">Thách thức tiềm ẩn:</h5>
+                        <ul class="list-disc ml-5 space-y-2 text-gray-700">
+                            <li>Có thể khuyến khích xu hướng cô lập quá mức</li>
+                            <li>Cần cân bằng giữa thời gian riêng tư và giao tiếp xã hội</li>
+                            <li>Nên tạo không gian cho hoạt động xã hội để cân bằng năng lượng</li>
+                            <li>Đôi khi có thể cảm thấy quá "sâu" và cần không gian thư giãn</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <h5 class="font-semibold mb-3">Chỉ số tương hợp chi tiết:</h5>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span>Sự thịnh vượng</span>
+                                <span class="text-sm text-gray-600">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span>Sức khỏe và an lành</span>
+                                <span class="text-sm text-gray-600">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span>Sự nghiệp và phát triển</span>
+                                <span class="text-sm text-gray-600">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span>Mối quan hệ</span>
+                                <span class="text-sm text-gray-600">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-yellow-500 h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                    <h5 class="font-semibold mb-2 text-indigo-700">Lời khuyên về tương hợp:</h5>
+                    <p class="text-gray-700 mb-3">
+                        Với mức độ tương hợp cao giữa bạn và số nhà 88, đây là một lựa chọn rất tốt. Tuy nhiên, để tối ưu hóa 
+                        năng lượng, bạn nên cân nhắc một số điều sau:
+                    </p>
+                    <ul class="list-disc ml-5 space-y-1 text-gray-700">
+                        <li>Tạo không gian xã hội trong nhà (phòng khách, khu vực BBQ) để cân bằng với năng lượng nội tâm mạnh mẽ</li>
+                        <li>Sử dụng màu sắc ấm (cam, vàng) ở một số khu vực để cân bằng với năng lượng trầm của số 7</li>
+                        <li>Tạo không gian ngoài trời kết nối với thiên nhiên để tăng cường trực giác và cân bằng tinh thần</li>
+                        <li>Bố trí một không gian riêng cho việc thiền định và suy ngẫm</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="feng-shui-tab">
+            <div class="bg-white p-6 rounded-lg shadow mb-6">
+                <h4 class="font-bold text-lg mb-4 text-indigo-700">Tư Vấn Phong Thủy Kết Hợp Thần Số Học</h4>
+                
+                <div class="mb-6">
+                    <h5 class="font-semibold mb-3">Cửa chính và lối vào:</h5>
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="md:w-1/3">
+                            <div class="bg-indigo-100 p-3 rounded-lg h-full flex items-center justify-center">
+                                <i class="fas fa-door-open text-5xl text-indigo-600"></i>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3">
+                            <p class="mb-3 text-gray-700">
+                                Với con số chủ đạo 7 và chỉ số linh hồn 3, cửa chính nên đặt ở hướng Bắc hoặc Đông. 
+                                Màu sắc phù hợp cho cửa chính: xanh dương đậm, tím thẫm hoặc đen - những màu thể hiện 
+                                trí tuệ và cá tính sâu sắc.
+                            </p>
+                            <div class="bg-yellow-50 p-3 border-l-4 border-yellow-400 rounded-r-md">
+                                <p class="text-sm text-gray-700">
+                                    <strong>Lời khuyên:</strong> Tránh đặt vật dụng sắc nhọn hoặc cây nhiều gai gần cửa chính. 
+                                    Nên đặt đèn pha lê hoặc đá thạch anh để thu hút năng lượng tích cực và kích thích trí tuệ.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <h5 class="font-semibold mb-3">Phòng khách:</h5>
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="md:w-1/3">
+                            <div class="bg-indigo-100 p-3 rounded-lg h-full flex items-center justify-center">
+                                <i class="fas fa-couch text-5xl text-indigo-600"></i>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3">
+                            <p class="mb-3 text-gray-700">
+                                Phòng khách nên có cân bằng giữa yếu tố tĩnh (số 7) và động (số 3). Sử dụng màu xanh dương nhạt, 
+                                tím lavender hoặc xanh lá nhạt cho tường. Bố trí không gian thảo luận sáng tạo kết hợp với 
+                                góc đọc sách yên tĩnh.
+                            </p>
+                            <div class="bg-yellow-50 p-3 border-l-4 border-yellow-400 rounded-r-md">
+                                <p class="text-sm text-gray-700">
+                                    <strong>Lời khuyên:</strong> Đặt 7 cây xanh nhỏ hoặc 3 cây lớn để cân bằng năng lượng. 
+                                    Tránh trưng bày quá nhiều vật dụng rườm rà, giữ không gian thoáng đãng cho tư duy.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <h5 class="font-semibold mb-3">Phòng ngủ:</h5>
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="md:w-1/3">
+                            <div class="bg-indigo-100 p-3 rounded-lg h-full flex items-center justify-center">
+                                <i class="fas fa-bed text-5xl text-indigo-600"></i>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3">
+                            <p class="mb-3 text-gray-700">
+                                Phòng ngủ nên đặt ở hướng Đông để đón năng lượng ban mai, thích hợp với chỉ số linh hồn 3. 
+                                Sử dụng màu xanh dương nhạt, tím lavender hoặc xám nhạt - những màu thúc đẩy sự nghỉ ngơi và trực giác.
+                            </p>
+                            <div class="bg-yellow-50 p-3 border-l-4 border-yellow-400 rounded-r-md">
+                                <p class="text-sm text-gray-700">
+                                    <strong>Lời khuyên:</strong> Giường nên đặt sao cho đầu giường có tường chắc chắn phía sau, 
+                                    tránh đặt dưới cửa sổ hoặc đối diện trực tiếp với cửa. Hạn chế thiết bị điện tử trong phòng ngủ.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <h5 class="font-semibold mb-3">Phòng làm việc:</h5>
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="md:w-1/3">
+                            <div class="bg-indigo-100 p-3 rounded-lg h-full flex items-center justify-center">
+                                <i class="fas fa-laptop-house text-5xl text-indigo-600"></i>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3">
+                            <p class="mb-3 text-gray-700">
+                                Đây là không gian đặc biệt quan trọng với người có con số chủ đạo 7. Nên đặt ở hướng Bắc, 
+                                sử dụng màu trung tính kết hợp điểm nhấn xanh dương hoặc tím - kích thích trí tuệ và tư duy phân tích.
+                            </p>
+                            <div class="bg-yellow-50 p-3 border-l-4 border-yellow-400 rounded-r-md">
+                                <p class="text-sm text-gray-700">
+                                    <strong>Lời khuyên:</strong> Bàn làm việc nên đặt ở vị trí "chỉ huy" (nhìn được cửa ra vào nhưng 
+                                    có tường chắc chắn phía sau). Trang trí với đá thạch anh tím hoặc lam ngọc để tăng cường trí tuệ và trực giác.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <h5 class="font-semibold mb-3">Nhà bếp và phòng ăn:</h5>
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="md:w-1/3">
+                            <div class="bg-indigo-100 p-3 rounded-lg h-full flex items-center justify-center">
+                                <i class="fas fa-utensils text-5xl text-indigo-600"></i>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3">
+                            <p class="mb-3 text-gray-700">
+                                Với chỉ số nhân cách 5 thích sự tự do, nhà bếp nên có không gian mở và linh hoạt. 
+                                Sử dụng màu ấm như cam nhạt, vàng nhạt - kích thích trao đổi và cân bằng năng lượng nội tâm của số 7.
+                            </p>
+                            <div class="bg-yellow-50 p-3 border-l-4 border-yellow-400 rounded-r-md">
+                                <p class="text-sm text-gray-700">
+                                    <strong>Lời khuyên:</strong> Đặt bàn ăn hình chữ nhật hoặc bầu dục để thúc đẩy giao tiếp. 
+                                    Tránh đặt bếp đối diện trực tiếp với cửa chính hoặc cửa nhà vệ sinh. Sử dụng cây xanh trong nhà bếp.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                    <h5 class="font-semibold mb-2 text-indigo-700">Màu sắc phù hợp theo thần số học:</h5>
+                    <div class="flex flex-wrap gap-3 mb-4">
+                        <div style="background-color: #1a365d;" class="w-10 h-10 rounded-full border border-gray-300"></div>
+                        <div style="background-color: #7c3aed;" class="w-10 h-10 rounded-full border border-gray-300"></div>
+                        <div style="background-color: #065f46;" class="w-10 h-10 rounded-full border border-gray-300"></div>
+                        <div style="background-color: #e0e7ff;" class="w-10 h-10 rounded-full border border-gray-300"></div>
+                        <div style="background-color: #f0fdfa;" class="w-10 h-10 rounded-full border border-gray-300"></div>
+                        <div style="background-color: #fef3c7;" class="w-10 h-10 rounded-full border border-gray-300"></div>
+                    </div>
+                    <p class="text-sm text-gray-700 mb-2">
+                        Xanh dương đậm, tím, xanh lá đậm là màu chủ đạo phù hợp với con số 7. 
+                        Xanh dương nhạt, xanh lá nhạt và vàng nhạt là màu phụ cân bằng năng lượng.
+                    </p>
+                    <p class="text-sm text-gray-700">
+                        <strong>Lời khuyên:</strong> Sử dụng màu chủ đạo cho các chi tiết nhỏ và điểm nhấn. 
+                        Dùng màu phụ cho các bề mặt lớn như tường, sàn để tạo cảm giác thoáng đãng.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Number Conversion Reference -->
+    <section class="section">
+        <h2 class="text-2xl font-bold mb-6 text-indigo-800">Bảng Quy Đổi Chữ Cái Thần Số Học (Pythagoras)</h2>
+        
+        <div class="overflow-x-auto">
+            <table class="min-w-full border-collapse border border-gray-300">
+                <thead>
+                    <tr class="bg-indigo-100">
+                        <th class="border border-gray-300 py-2 px-4">Giá trị</th>
+                        <th class="border border-gray-300 py-2 px-4">Chữ cái</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border border-gray-300 py-2 px-4 text-center font-medium">1</td>
+                        <td class="border border-gray-300 py-2 px-4">A, J, S</td>
+                    </tr>
+                    <tr class="bg-gray-50">
+                        <td class="border border-gray-300 py-2 px-4 text-center font-medium">2</td>
+                        <td class="border border-gray-300 py-2 px-4">B, K, T</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 py-2 px-4 text-center font-medium">3</td>
+                        <td class="border border-gray-300 py-2 px-4">C, L, U</td>
+                    </tr>
+                    <tr class="bg-gray-50">
+                        <td class="border border-gray-300 py-2 px-4 text-center font-medium">4</td>
+                        <td class="border border-gray-300 py-2 px-4">D, M, V</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 py-2 px-4 text-center font-medium">5</td>
+                        <td class="border border-gray-300 py-2 px-4">E, N, W</td>
+                    </tr>
+                    <tr class="bg-gray-50">
+                        <td class="border border-gray-300 py-2 px-4 text-center font-medium">6</td>
+                        <td class="border border-gray-300 py-2 px-4">F, O, X</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 py-2 px-4 text-center font-medium">7</td>
+                        <td class="border border-gray-300 py-2 px-4">G, P, Y</td>
+                    </tr>
+                    <tr class="bg-gray-50">
+                        <td class="border border-gray-300 py-2 px-4 text-center font-medium">8</td>
+                        <td class="border border-gray-300 py-2 px-4">H, Q, Z</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 py-2 px-4 text-center font-medium">9</td>
+                        <td class="border border-gray-300 py-2 px-4">I, R</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <p class="mt-4 text-sm text-gray-600">
+            Họ tên sẽ được tự động bỏ dấu và chuyển thành chữ hoa trước khi tính toán chỉ số Thần Số Học. Các chữ số trong 
+            ngày sinh, tháng sinh và năm sinh sẽ được cộng lại cho đến khi thu được một số đơn (1-9), trừ các số thần 11, 22.
+        </p>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="section">
+        <h2 class="text-2xl font-bold mb-6 text-indigo-800">Câu Hỏi Thường Gặp</h2>
+        
+        <div class="space-y-4">
+            <div class="border border-gray-200 rounded-lg">
+                <button class="w-full text-left px-6 py-4 font-medium focus:outline-none">
+                    Thần Số Học có thật sự ảnh hưởng đến việc mua bán nhà?
+                </button>
+                <div class="px-6 py-4 border-t border-gray-200 bg-gray-50">
+                    <p>
+                        Thần Số Học là một bộ môn nghiên cứu mối liên hệ giữa con số và cuộc sống con người. Trong lĩnh vực bất động sản, 
+                        Thần Số Học được nhiều người sử dụng như một công cụ tham khảo bổ sung, giúp đưa ra quyết định phù hợp với năng lượng cá nhân. 
+                        Mặc dù không có bằng chứng khoa học chứng minh tính chính xác tuyệt đối, nhiều người vẫn tin rằng việc sống trong không gian 
+                        có năng lượng phù hợp với con số cá nhân có thể tạo cảm giác hài hòa và thoải mái hơn.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="border border-gray-200 rounded-lg">
+                <button class="w-full text-left px-6 py-4 font-medium focus:outline-none">
+                    Làm thế nào để tính được con số nhà hợp với tôi?
+                </button>
+                <div class="px-6 py-4 border-t border-gray-200 bg-gray-50">
+                    <p>
+                        Để tính con số nhà phù hợp, bạn cần cộng tất cả các chữ số của địa chỉ lại với nhau cho đến khi thu được một số đơn (1-9). 
+                        Ví dụ: Nhà số 123 = 1+2+3 = 6. Sau đó, so sánh con số này với con số chủ đạo và các chỉ số thần số học khác của bạn 
+                        để xác định mức độ tương hợp. Trên website này, chúng tôi tự động tính toán và phân tích mức độ tương hợp giữa bạn và số nhà 
+                        mà bạn quan tâm dựa trên các nguyên lý thần số học Pythagoras.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="border border-gray-200 rounded-lg">
+                <button class="w-full text-left px-6 py-4 font-medium focus:outline-none">
+                    Thần Số Học khác gì so với Phong Thủy?
+                </button>
+                <div class="px-6 py-4 border-t border-gray-200 bg-gray-50">
+                    <p>
+                        Thần Số Học và Phong Thủy là hai bộ môn khác nhau nhưng có thể bổ trợ cho nhau. Phong Thủy tập trung vào sự cân bằng âm-dương, 
+                        năm yếu tố (kim, mộc, thủy, hỏa, thổ) và dòng chảy năng lượng (khí) trong không gian sống. Trong khi đó, Thần Số Học 
+                        nghiên cứu mối liên hệ giữa con người và con số thông qua họ tên, ngày sinh. Kết hợp cả hai bộ môn này giúp tạo ra một 
+                        không gian sống hài hòa cả về mặt vật lý (phong thủy) và năng lượng số học cá nhân.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="border border-gray-200 rounded-lg">
+                <button class="w-full text-left px-6 py-4 font-medium focus:outline-none">
+                    Làm thế nào để môi giới BĐS sử dụng công cụ này hiệu quả?
+                </button>
+                <div class="px-6 py-4 border-t border-gray-200 bg-gray-50">
+                    <p>
+                        Môi giới BĐS có thể sử dụng công cụ Thần Số Học BĐS này như một dịch vụ giá trị gia tăng đặc biệt cho khách hàng. 
+                        Trước khi giới thiệu bất động sản, bạn có thể phân tích thần số học của khách hàng để hiểu rõ hơn về nhu cầu tiềm ẩn 
+                        của họ. Sau đó, sử dụng thông tin này để lọc và gợi ý những bất động sản có số nhà, hướng nhà phù hợp. Việc này không chỉ 
+                        thể hiện sự chuyên nghiệp mà còn tạo điểm khác biệt so với các đối thủ cạnh tranh, đồng thời giúp khách hàng kết nối 
+                        sâu sắc hơn với bất động sản được giới thiệu.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="border border-gray-200 rounded-lg">
+                <button class="w-full text-left px-6 py-4 font-medium focus:outline-none">
+                    Nếu tôi không thể thay đổi số nhà, tôi có thể làm gì?
+                </button>
+                <div class="px-6 py-4 border-t border-gray-200 bg-gray-50">
+                    <p>
+                        Nếu không thể thay đổi số nhà, bạn vẫn có thể điều chỉnh năng lượng của ngôi nhà thông qua nhiều cách khác:
+                    </p>
+                    <ul class="list-disc ml-5 mt-2 space-y-1">
+                        <li>Thay đổi cách hiển thị số nhà (thêm dấu hoặc ký hiệu giữa các chữ số)</li>
+                        <li>Điều chỉnh bố cục nội thất theo hướng phù hợp với năng lượng cá nhân</li>
+                        <li>Sử dụng màu sắc và vật phẩm phong thủy để cân bằng năng lượng</li>
+                        <li>Tạo không gian riêng trong nhà phù hợp với con số chủ đạo của bạn</li>
+                        <li>Đặt tên cho ngôi nhà (biệt danh) có năng lượng số học phù hợp với bạn</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2 class="text-2xl font-bold mb-6 text-indigo-800">Liên Hệ Tư Vấn Chuyên Sâu</h2>
+        <div class="bg-gradient-to-r from-indigo-800 to-blue-600 rounded-lg p-6 text-white">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Vũ Trọng Khải</h3>
+                    <p class="mb-4">Chuyên viên Sale & Marketing Bất Động Sản</p>
+                    <p class="mb-6">Tư vấn chuyên sâu về bất động sản kết hợp thần số học và phong thủy</p>
+                    
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-phone-alt mr-3 text-indigo-200"></i>
+                        <span>Hotline: <a href="tel:0902798800" class="font-bold underline hover:text-indigo-200">0902 79 8800</a></span>
+                    </div>
+                    
+                    <div class="mb-6 space-y-4">
+                        <div class="flex flex-wrap gap-2">
+                            <a href="https://www.facebook.com/khai.rainmaker/" target="_blank" class="social-link">
+                                <i class="fab fa-facebook social-icon"></i> Facebook
+                            </a>
+                            <a href="https://zalo.me/0902798800" target="_blank" class="social-link">
+                                <i class="fas fa-comment social-icon"></i> Zalo
+                            </a>
+                            <a href="https://www.youtube.com/@sannhadeptrungtamhcm" target="_blank" class="social-link">
+                                <i class="fab fa-youtube social-icon"></i> Youtube
+                            </a>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="https://www.linkedin.com/in/vu-trong-khai-2264ba1a4" target="_blank" class="social-link">
+                                <i class="fab fa-linkedin social-icon"></i> LinkedIn
+                            </a>
+                            <a href="https://www.instagram.com/vutrongkhai.com.mkt.bds/" target="_blank" class="social-link">
+                                <i class="fab fa-instagram social-icon"></i> Instagram
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Gửi yêu cầu tư vấn</h4>
+                    <form class="space-y-4">
+                        <div>
+                            <input type="text" placeholder="Họ và tên" class="w-full px-4 py-2 rounded-md focus:outline-none text-gray-800">
+                        </div>
+                        <div>
+                            <input type="tel" placeholder="Số điện thoại" class="w-full px-4 py-2 rounded-md focus:outline-none text-gray-800">
+                        </div>
+                        <div>
+                            <textarea placeholder="Nội dung cần tư vấn" class="w-full px-4 py-2 rounded-md focus:outline-none text-gray-800" rows="4"></textarea>
+                        </div>
+                        <div>
+                            <button type="button" class="bg-white text-indigo-800 px-6 py-2 rounded-md font-medium hover:bg-indigo-100 transition">
+                                Gửi yêu cầu
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-12 py-8 bg-gray-800 text-white rounded-lg">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-xl font-semibold mb-4">Thần Số Học BĐS - Công Cụ Tư Vấn Bất Động Sản Thông Minh</h3>
+            <p class="mb-6">Khám phá sự kết hợp giữa thần số học và bất động sản để tìm ngôi nhà phù hợp nhất với bạn</p>
+            <div class="flex justify-center space-x-4 mb-6">
+                <a href="https://www.facebook.com/khai.rainmaker/" target="_blank" class="hover:text-indigo-300 transition">
+                    <i class="fab fa-facebook-square text-2xl"></i>
+                </a>
+                <a href="https://www.instagram.com/vutrongkhai.com.mkt.bds/" target="_blank" class="hover:text-indigo-300 transition">
+                    <i class="fab fa-instagram text-2xl"></i>
+                </a>
+                <a href="https://www.youtube.com/@sannhadeptrungtamhcm" target="_blank" class="hover:text-indigo-300 transition">
+                    <i class="fab fa-youtube text-2xl"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/vu-trong-khai-2264ba1a4" target="_blank" class="hover:text-indigo-300 transition">
+                    <i class="fab fa-linkedin text-2xl"></i>
+                </a>
+            </div>
+            <div class="mb-4">
+                <p class="font-semibold">Vũ Trọng Khải</p>
+                <p>Sale & Marketing Bất Động Sản</p>
+                <p><a href="tel:0902798800" class="hover:underline">Hotline: 0902 79 8800</a></p>
+            </div>
+            <p class="text-sm text-gray-400">
+                © <span id="current-year">2023</span> Ứng Dụng Tra Cứu Thần Số Học Online. Nội dung mang tính chất tham khảo.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Tab functionality
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all tabs
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Add active class to clicked tab
+                button.classList.add('active');
+                document.getElementById(button.dataset.tab).classList.add('active');
+            });
+        });
+        
+        // Form submission and display results
+        document.getElementById('analyzeButton').addEventListener('click', () => {
+            // Get form values
+            const fullName = document.getElementById('fullName').value;
+            const birthDate = document.getElementById('birthDate').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const houseNumber = document.getElementById('houseNumber').value;
+            
+            // Validate required fields
+            if (!fullName || !birthDate) {
+                alert('Vui lòng nhập đầy đủ họ tên và ngày sinh!');
+                return;
+            }
+            
+            // Display results
+            document.getElementById('result-name').textContent = fullName;
+            document.getElementById('result-birthdate').textContent = formatDate(birthDate);
+            document.getElementById('result-phone').textContent = phoneNumber || '(Không cung cấp)';
+            document.getElementById('result-house').textContent = houseNumber || '(Không cung cấp)';
+            
+            // Show results section
+            document.getElementById('results').style.display = 'block';
+            
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Format date function
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('vi-VN', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+        }
+        
+        // Initialize current year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Fake calculation functions - In a real app, these would implement actual numerology calculations
+        function calculateLifePathNumber(birthdate) {
+            // This is a simplified placeholder for illustration
+            return Math.floor(Math.random() * 9) + 1;
+        }
+        
+        function calculateSoulNumber(name) {
+            // This is a simplified placeholder for illustration
+            return Math.floor(Math.random() * 9) + 1;
+        }
+    </script>
+</body>
+</html>
